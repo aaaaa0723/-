@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>質感奶茶色導航選單</title>
+    <style>
+        /* CSS reset & base */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F5EAE0; /* 淺奶茶色背景 */
+            font-family: 'Helvetica Neue', Arial, '微軟正黑體', sans-serif;
+            color: #5C4A3D; /* 深焙咖啡色字體，柔和不刺眼 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 將整體內容上移，達成「中間偏上一點」的要求 */
+        .container {
+            transform: translateY(-15%);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #4A3A2F;
+        }
+
+        /* 質感選單外框設計 */
+        .menu-box {
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(92, 74, 61, 0.08);
+            overflow: hidden;
+        }
+
+        /* 按鈕共用樣式 */
+        .category-btn, .sub-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 20px;
+            text-align: left;
+            color: #5C4A3D;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 第一層：大分類 */
+        .category-btn {
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #FAF4EE;
+            border-bottom: 1px solid #EFE5D8;
+        }
+        .category-btn:hover { background-color: #EFE5D8; }
+
+        /* 第二層：子分類 */
+        .sub-btn {
+            font-size: 15px;
+            padding: 14px 20px 14px 35px;
+            background-color: #FFFFFF;
+            border-bottom: 1px dashed #F5EAE0;
+        }
+        .sub-btn:hover { background-color: #FAF4EE; }
+
+        /* 隱藏內容的容器 */
+        .sub-menu, .location-container {
+            display: none; /* 預設隱藏，靠 JS 展開 */
+            flex-direction: column;
+        }
+
+        /* 第三層：地點導航連結 */
+        .location-link {
+            display: block;
+            padding: 14px 20px 14px 50px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #A67B5B; /* 質感焦糖色 */
+            text-decoration: none;
+            background-color: #FCFBF9;
+            text-align: left;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #F5EAE0;
+        }
+
+        /* 滑鼠移上去的小巧思動態效果 */
+        .location-link:hover {
+            color: #D35400; /* 稍微提亮但不撞色 */
+            background-color: #FFF2E6;
+            padding-left: 55px; 
+        }
+
+        /* 右側箭頭動畫 */
+        .icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .active > .icon { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">質感導航專區</h1>
+    <div class="menu-box">
+        
+        <button class="category-btn" onclick="toggleMenu('cat1', this)">分類 1：日常美食 <span class="icon">▼</span></button>
+        <div id="cat1" class="sub-menu">
+            <button class="sub-btn" onclick="toggleMenu('sub1-1', this)">子分類 1-1 <span class="icon">▼</span></button>
+            <div id="sub1-1" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=萬客什鍋" target="_blank">📍 導航前往：萬客什鍋</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub1-2', this)">子分類 1-2 <span class="icon">▼</span></button>
+            <div id="sub1-2" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=六鮮新世界" target="_blank">📍 導航前往：六鮮新世界</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub1-3', this)">子分類 1-3 <span class="icon">▼</span></button>
+            <div id="sub1-3" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=築間幸福鍋物" target="_blank">📍 導航前往：築間幸福鍋物</a>
+            </div>
+        </div>
+
+        <button class="category-btn" onclick="toggleMenu('cat2', this)">分類 2：走跳市區 <span class="icon">▼</span></button>
+        <div id="cat2" class="sub-menu">
+            <button class="sub-btn" onclick="toggleMenu('sub2-1', this)">子分類 2-1 <span class="icon">▼</span></button>
+            <div id="sub2-1" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=國立中興大學" target="_blank">📍 導航前往：國立中興大學</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub2-2', this)">子分類 2-2 <span class="icon">▼</span></button>
+            <div id="sub2-2" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=台中火車站" target="_blank">📍 導航前往：台中火車站</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub2-3', this)">子分類 2-3 <span class="icon">▼</span></button>
+            <div id="sub2-3" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=台中國家歌劇院" target="_blank">📍 導航前往：台中國家歌劇院</a>
+            </div>
+        </div>
+
+        <button class="category-btn" onclick="toggleMenu('cat3', this)">分類 3：關西特輯 <span class="icon">▼</span></button>
+        <div id="cat3" class="sub-menu">
+            <button class="sub-btn" onclick="toggleMenu('sub3-1', this)">子分類 3-1 <span class="icon">▼</span></button>
+            <div id="sub3-1" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=梅田藍天大廈" target="_blank">📍 導航前往：梅田藍天大廈</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub3-2', this)">子分類 3-2 <span class="icon">▼</span></button>
+            <div id="sub3-2" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=大阪城" target="_blank">📍 導航前往：大阪城</a>
+            </div>
+            <button class="sub-btn" onclick="toggleMenu('sub3-3', this)">子分類 3-3 <span class="icon">▼</span></button>
+            <div id="sub3-3" class="location-container">
+                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=神戶港塔" target="_blank">📍 導航前往：神戶港塔</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 簡單俐落的 JS 負責切換選單的展開與收合
+    function toggleMenu(id, btn) {
+        const el = document.getElementById(id);
+        if (el.style.display === "flex") {
+            el.style.display = "none";
+            btn.classList.remove("active");
+        } else {
+            el.style.display = "flex";
+            btn.classList.add("active");
+        }
+    }
+</script>
+
+</body>
+</html>
