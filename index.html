@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你從桃園新竹</title>
+    <title>關西隨身導航地圖包</title>
     <style>
         /* ================= 基礎設定 ================= */
         body {
             margin: 0;
             padding: 0;
-            background-color: #F5EAE0; /* 淺奶茶色背景 */
+            background-color: #F5EAE0;
             font-family: 'Helvetica Neue', Arial, '微軟正黑體', sans-serif;
-            color: #5C4A3D; /* 深焙咖啡色字體 */
+            color: #5C4A3D;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +19,6 @@
             overflow: hidden;
         }
 
-        /* 將整體內容上移，達成「中間偏上一點」 */
         .container {
             transform: translateY(-15%);
             width: 90%;
@@ -56,6 +55,13 @@
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(92, 74, 61, 0.08);
             overflow: hidden;
+            max-height: 60vh; /* 避免選單太長，設定最大高度 */
+            overflow-y: auto; /* 超過高度可滑動 */
+        }
+
+        /* 隱藏卷軸讓畫面更乾淨 (適用於 Chrome/Safari) */
+        .menu-box::-webkit-scrollbar {
+            display: none;
         }
 
         /* ================= 按鈕共用樣式 ================= */
@@ -78,11 +84,10 @@
         .nav-btn:last-child { border-bottom: none; }
         .nav-btn:hover {
             background-color: #FAF4EE;
-            padding-left: 25px; /* 滑鼠移入時稍微往右退，增加動態感 */
+            padding-left: 25px;
         }
         .arrow-right { color: #A67B5B; }
 
-        /* 子分類按鈕微調一點層次感 */
         .sub-btn {
             font-size: 16px;
             background-color: #FCFBF9;
@@ -122,7 +127,7 @@
         }
 
         /* ================= 內容切換區塊 ================= */
-        .content-group { display: none; } /* 隱藏非當前分類的內容 */
+        .content-group { display: none; }
         .content-group.active { display: block; }
 
         /* ================= 第三層：地點連結 ================= */
@@ -153,15 +158,16 @@
     
     <!-- ================= 視圖一：主分類首頁 ================= -->
     <div id="main-view" class="view active">
+        <h1 class="title">關西隨身導航包</h1>
         <div class="menu-box">
-            <button class="nav-btn" onclick="goToCategory('cat1', '日常美食')">
-                分類 1：日常美食 <span class="arrow-right">➔</span>
+            <button class="nav-btn" onclick="goToCategory('cat1', '心齋橋')">
+                📍 心齋橋 <span class="arrow-right">➔</span>
             </button>
-            <button class="nav-btn" onclick="goToCategory('cat2', '走跳市區')">
-                分類 2：走跳市區 <span class="arrow-right">➔</span>
+            <button class="nav-btn" onclick="goToCategory('cat2', '梅田')">
+                📍 梅田 <span class="arrow-right">➔</span>
             </button>
-            <button class="nav-btn" onclick="goToCategory('cat3', '關西特輯')">
-                分類 3：關西特輯 <span class="arrow-right">➔</span>
+            <button class="nav-btn" onclick="goToCategory('cat3', '三宮中心街')">
+                📍 三宮中心街 <span class="arrow-right">➔</span>
             </button>
         </div>
     </div>
@@ -169,40 +175,43 @@
     <!-- ================= 視圖二：子分類選單 ================= -->
     <div id="sub-view" class="view">
         <div class="sub-header">
-            <button class="back-btn" onclick="goBackToMain()">← 返回分類</button>
+            <button class="back-btn" onclick="goBackToMain()">← 返回</button>
             <h2 id="sub-title" class="view-title">分類名稱</h2>
         </div>
         
         <div class="menu-box">
             
-            <!-- 分類 1 的子分類 -->
+            <!-- 心齋橋的子分類 -->
             <div id="cat1" class="content-group">
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub1', '火鍋愛好者')">
-                    火鍋愛好者 <span class="arrow-right">➔</span>
-                </button>
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub2', '平價小吃')">
-                    平價小吃 <span class="arrow-right">➔</span>
-                </button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub1', '心齋橋 - 藥妝')">💊 藥妝專區 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub2', '心齋橋 - 彩妝')">✨ 彩妝推薦 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub3', '心齋橋 - 動漫')">🎮 動漫聖地 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub4', '心齋橋 - 咖啡廳')">☕ 質感咖啡廳 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub5', '心齋橋 - 甜的')">🍰 療癒甜食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub6', '心齋橋 - 鹹的')">🍜 人氣鹹食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat1-sub7', '心齋橋 - 其他')">🛍️ 雜貨與其他 <span class="arrow-right">➔</span></button>
             </div>
 
-            <!-- 分類 2 的子分類 -->
+            <!-- 梅田的子分類 -->
             <div id="cat2" class="content-group">
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub1', '文藝青年')">
-                    文藝青年 <span class="arrow-right">➔</span>
-                </button>
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub2', '交通樞紐')">
-                    交通樞紐 <span class="arrow-right">➔</span>
-                </button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub1', '梅田 - 藥妝')">💊 藥妝專區 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub2', '梅田 - 彩妝')">✨ 彩妝推薦 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub3', '梅田 - 動漫')">🎮 動漫聖地 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub4', '梅田 - 咖啡廳')">☕ 質感咖啡廳 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub5', '梅田 - 甜的')">🍰 療癒甜食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub6', '梅田 - 鹹的')">🍜 人氣鹹食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat2-sub7', '梅田 - 其他')">🛍️ 雜貨與其他 <span class="arrow-right">➔</span></button>
             </div>
 
-            <!-- 分類 3 的子分類 -->
+            <!-- 三宮中心街的子分類 -->
             <div id="cat3" class="content-group">
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub1', '大阪必去')">
-                    大阪必去 <span class="arrow-right">➔</span>
-                </button>
-                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub2', '神戶風情')">
-                    神戶風情 <span class="arrow-right">➔</span>
-                </button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub1', '三宮 - 藥妝')">💊 藥妝專區 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub2', '三宮 - 彩妝')">✨ 彩妝推薦 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub3', '三宮 - 動漫')">🎮 動漫聖地 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub4', '三宮 - 咖啡廳')">☕ 質感咖啡廳 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub5', '三宮 - 甜的')">🍰 療癒甜食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub6', '三宮 - 鹹的')">🍜 人氣鹹食 <span class="arrow-right">➔</span></button>
+                <button class="nav-btn sub-btn" onclick="goToLocation('cat3-sub7', '三宮 - 其他')">🛍️ 雜貨與其他 <span class="arrow-right">➔</span></button>
             </div>
 
         </div>
@@ -211,37 +220,126 @@
     <!-- ================= 視圖三：地點列表 ================= -->
     <div id="location-view" class="view">
         <div class="sub-header">
-            <button class="back-btn" onclick="goBackToSub()">← 返回上一層</button>
+            <button class="back-btn" onclick="goBackToSub()">← 返回</button>
             <h2 id="loc-title" class="view-title">子分類名稱</h2>
         </div>
         
         <div class="menu-box">
             
-            <!-- 分類 1 的地點 -->
+            <!-- ================= 心齋橋 ================= -->
+            <!-- 心齋橋 - 藥妝 -->
             <div id="cat1-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=萬客什鍋" target="_blank">📍 萬客什鍋</a>
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=築間幸福鍋物" target="_blank">📍 築間幸福鍋物</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+大國藥妝" target="_blank">🔍 搜尋最近的：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+千里馬藥妝" target="_blank">🔍 搜尋最近的：千里馬藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+唐吉訶德" target="_blank">🔍 搜尋最近的：Donki 唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+松本清" target="_blank">🔍 搜尋最近的：松本清</a>
             </div>
+            <!-- 心齋橋 - 彩妝 -->
             <div id="cat1-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=六鮮新世界" target="_blank">📍 六鮮新世界</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+cosme+STORE" target="_blank">🔍 搜尋最近的：@cosme STORE</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=大丸心齋橋+彩妝專櫃" target="_blank">🔍 搜尋：大丸百貨專櫃彩妝</a>
+            </div>
+            <!-- 心齋橋 - 動漫 -->
+            <div id="cat1-sub3" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+駿河屋" target="_blank">🔍 搜尋最近的：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+Animate+安麗美特" target="_blank">🔍 搜尋最近的：安麗美特</a>
+            </div>
+            <!-- 心齋橋 - 咖啡廳 -->
+            <div id="cat1-sub4" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+咖啡廳" target="_blank">☕ 搜尋附近高分：咖啡廳</a>
+            </div>
+            <!-- 心齋橋 - 甜的 -->
+            <div id="cat1-sub5" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+甜點+下午茶" target="_blank">🍰 搜尋附近熱門：甜點 / 下午茶</a>
+            </div>
+            <!-- 心齋橋 - 鹹的 -->
+            <div id="cat1-sub6" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+美食+拉麵+燒肉" target="_blank">🍜 搜尋附近好評：拉麵 / 燒肉 / 美食</a>
+            </div>
+            <!-- 心齋橋 - 其他 -->
+            <div id="cat1-sub7" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+大創+DAISO" target="_blank">🔍 搜尋最近的：大創 DAISO</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+3COINS" target="_blank">🔍 搜尋最近的：3COINS</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=大丸心齋橋+寶可夢中心" target="_blank">🦖 前往：寶可夢中心 (大丸百貨內)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=心齋橋+無印良品+MUJI" target="_blank">🔍 搜尋最近的：無印良品 MUJI</a>
             </div>
 
-            <!-- 分類 2 的地點 -->
+
+            <!-- ================= 梅田 ================= -->
+            <!-- 梅田 - 藥妝 -->
             <div id="cat2-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=台中國家歌劇院" target="_blank">📍 台中國家歌劇院</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+大國藥妝" target="_blank">🔍 搜尋最近的：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+唐吉訶德" target="_blank">🔍 搜尋最近的：Donki 唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+松本清" target="_blank">🔍 搜尋最近的：松本清</a>
             </div>
+            <!-- 梅田 - 彩妝 -->
             <div id="cat2-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=台中火車站" target="_blank">📍 台中火車站</a>
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=國立中興大學" target="_blank">📍 國立中興大學</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+LUCUA+彩妝" target="_blank">🔍 搜尋：LUCUA 百貨彩妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=阪急百貨+梅田+彩妝" target="_blank">🔍 搜尋：阪急百貨專櫃彩妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+cosme" target="_blank">🔍 搜尋最近的：@cosme STORE</a>
+            </div>
+            <!-- 梅田 - 動漫 -->
+            <div id="cat2-sub3" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+Nintendo+OSAKA" target="_blank">🍄 前往：任天堂旗艦店 (大丸梅田)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+寶可夢中心" target="_blank">🦖 前往：寶可夢中心 (大丸梅田)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+駿河屋" target="_blank">🔍 搜尋最近的：駿河屋</a>
+            </div>
+            <!-- 梅田 - 咖啡廳 -->
+            <div id="cat2-sub4" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+咖啡廳" target="_blank">☕ 搜尋附近高分：咖啡廳</a>
+            </div>
+            <!-- 梅田 - 甜的 -->
+            <div id="cat2-sub5" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+甜點+下午茶" target="_blank">🍰 搜尋附近熱門：甜點 / 下午茶</a>
+            </div>
+            <!-- 梅田 - 鹹的 -->
+            <div id="cat2-sub6" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+美食+燒肉+居酒屋" target="_blank">🍜 搜尋附近好評：燒肉 / 居酒屋</a>
+            </div>
+            <!-- 梅田 - 其他 -->
+            <div id="cat2-sub7" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+大創+DAISO" target="_blank">🔍 搜尋最近的：大創 DAISO</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+3COINS" target="_blank">🔍 搜尋最近的：3COINS</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=梅田+無印良品+MUJI" target="_blank">🔍 搜尋最近的：無印良品 MUJI</a>
             </div>
 
-            <!-- 分類 3 的地點 -->
+
+            <!-- ================= 三宮中心街 ================= -->
+            <!-- 三宮 - 藥妝 -->
             <div id="cat3-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=梅田藍天大廈" target="_blank">📍 梅田藍天大廈</a>
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=大阪城" target="_blank">📍 大阪城</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+大國藥妝" target="_blank">🔍 搜尋最近的：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+唐吉訶德" target="_blank">🔍 搜尋最近的：Donki 唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+松本清" target="_blank">🔍 搜尋最近的：松本清</a>
             </div>
+            <!-- 三宮 - 彩妝 -->
             <div id="cat3-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/dir/?api=1&destination=神戶港塔" target="_blank">📍 神戶港塔</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=神戶+阪急+彩妝" target="_blank">🔍 搜尋：神戶阪急百貨彩妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+cosme" target="_blank">🔍 搜尋最近的：@cosme STORE</a>
+            </div>
+            <!-- 三宮 - 動漫 -->
+            <div id="cat3-sub3" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+駿河屋" target="_blank">🔍 搜尋最近的：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+Animate+安麗美特" target="_blank">🔍 搜尋最近的：安麗美特</a>
+            </div>
+            <!-- 三宮 - 咖啡廳 -->
+            <div id="cat3-sub4" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+咖啡廳" target="_blank">☕ 搜尋附近高分：咖啡廳</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=北野異人館+星巴克" target="_blank">📸 前往：北野異人館星巴克 (好拍照)</a>
+            </div>
+            <!-- 三宮 - 甜的 -->
+            <div id="cat3-sub5" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+甜點+下午茶" target="_blank">🍰 搜尋附近熱門：甜點 / 下午茶</a>
+            </div>
+            <!-- 三宮 - 鹹的 -->
+            <div id="cat3-sub6" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+神戶牛排" target="_blank">🥩 搜尋必吃：神戶牛排餐廳</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+拉麵" target="_blank">🍜 搜尋附近好評：拉麵</a>
+            </div>
+            <!-- 三宮 - 其他 -->
+            <div id="cat3-sub7" class="content-group">
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+大創+DAISO" target="_blank">🔍 搜尋最近的：大創 DAISO</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮中心街+3COINS" target="_blank">🔍 搜尋最近的：3COINS</a>
+                <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=三宮+無印良品+MUJI" target="_blank">🔍 搜尋最近的：無印良品 MUJI</a>
             </div>
 
         </div>
@@ -251,54 +349,35 @@
 
 <script>
     // ========== 畫面切換邏輯 ==========
-
-    // 1. 從「首頁」進入「子分類頁」
     function goToCategory(catId, catName) {
-        // 切換視圖
         hideAllViews();
         document.getElementById('sub-view').classList.add('active');
-        
-        // 更新標題
         document.getElementById('sub-title').innerText = catName;
-
-        // 顯示對應的子分類內容
         showContentGroup(catId);
     }
 
-    // 2. 從「子分類頁」進入「地點列表頁」
     function goToLocation(locId, locName) {
-        // 切換視圖
         hideAllViews();
         document.getElementById('location-view').classList.add('active');
-        
-        // 更新標題
         document.getElementById('loc-title').innerText = locName;
-
-        // 顯示對應的地點內容
         showContentGroup(locId);
     }
 
-    // 3. 返回上一層 (回到子分類)
     function goBackToSub() {
         hideAllViews();
         document.getElementById('sub-view').classList.add('active');
     }
 
-    // 4. 返回最上層 (回到首頁)
     function goBackToMain() {
         hideAllViews();
         document.getElementById('main-view').classList.add('active');
     }
 
-    // ========== 輔助函數 ==========
-    
-    // 隱藏所有大畫面
     function hideAllViews() {
         let views = document.querySelectorAll('.view');
         views.forEach(view => view.classList.remove('active'));
     }
 
-    // 隱藏所有清單內容，只顯示目標 ID 的區塊
     function showContentGroup(targetId) {
         let allContents = document.querySelectorAll('.content-group');
         allContents.forEach(content => content.classList.remove('active'));
