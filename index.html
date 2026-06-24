@@ -149,14 +149,15 @@
             background-color: #FFF2E6;
             padding-left: 25px; 
         }
-        .desc {
-            display: block;
-            font-size: 12px;
-            color: #8C7A6B;
-            margin-top: 4px;
-            font-weight: normal;
+        
+        /* 空白狀態樣式 */
+        .empty-state {
+            padding: 30px 20px;
+            text-align: center;
+            color: #A67B5B;
+            font-size: 14px;
+            background-color: #FFFFFF;
         }
-
     </style>
 </head>
 <body>
@@ -167,14 +168,14 @@
     <div id="main-view" class="view active">
         <h1 class="title">關西隨身導航包</h1>
         <div class="menu-box">
-            <button class="nav-btn" onclick="goToCategory('cat1', '心齋橋 / 難波')">
-                📍 心齋橋 / 難波 <span class="arrow-right">➔</span>
+            <button class="nav-btn" onclick="goToCategory('cat1', '難波 / 心齋橋')">
+                📍 難波 / 心齋橋 <span class="arrow-right">➔</span>
             </button>
             <button class="nav-btn" onclick="goToCategory('cat2', '梅田')">
                 📍 梅田 <span class="arrow-right">➔</span>
             </button>
-            <button class="nav-btn" onclick="goToCategory('cat3', '三宮中心街')">
-                📍 三宮中心街 <span class="arrow-right">➔</span>
+            <button class="nav-btn" onclick="goToCategory('cat3', '神戶')">
+                📍 神戶 <span class="arrow-right">➔</span>
             </button>
         </div>
     </div>
@@ -185,7 +186,6 @@
             <button class="back-btn" onclick="goBackToMain()">← 返回</button>
             <h2 id="sub-title" class="view-title">分類名稱</h2>
         </div>
-        
         <div class="menu-box">
             <div id="sub-buttons-container"></div>
         </div>
@@ -200,112 +200,138 @@
         
         <div class="menu-box">
             
-            <!-- ================= 心齋橋 ================= -->
+            <!-- ================= 難波 / 心齋橋 ================= -->
             <div id="cat1-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">🔍 搜尋附近：大國藥妝 (ダイコク)</a>
-                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">🔍 搜尋附近：Donki 唐吉訶德</a>
-                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">🔍 搜尋附近：松本清</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">💊 搜尋附近：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">💊 搜尋附近：唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">💊 搜尋附近：松本清</a>
             </div>
             <div id="cat1-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/@cosme+STORE" target="_blank">🔍 搜尋附近：@cosme STORE</a>
-                <a class="location-link" href="https://www.google.com/maps/search/大丸" target="_blank">🔍 搜尋附近：大丸百貨</a>
+                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🎮 搜尋附近：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/アニメイト" target="_blank">🎮 搜尋附近：安利美特 (Animate)</a>
             </div>
             <div id="cat1-sub3" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🔍 搜尋附近：駿河屋</a>
-                <a class="location-link" href="https://www.google.com/maps/search/アニメイト" target="_blank">🔍 搜尋附近：安麗美特</a>
+                <a class="location-link" href="https://www.google.com/maps/search/GU" target="_blank">👕 搜尋附近：GU</a>
+                <a class="location-link" href="https://www.google.com/maps/search/PARK" target="_blank">👕 搜尋附近：PARK</a>
+                <a class="location-link" href="https://www.google.com/maps/search/Sense+of+Place" target="_blank">👕 搜尋附近：Sense of Place</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ZARA" target="_blank">👕 搜尋附近：ZARA</a>
+                <a class="location-link" href="https://www.google.com/maps/search/AYIN" target="_blank">👕 搜尋附近：AYIN</a>
+                <a class="location-link" href="https://www.google.com/maps/search/オレンジストリート" target="_blank">👕 前往：橘子街 (Orange Street)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ami+paris" target="_blank">👕 搜尋附近：ami paris</a>
+                <a class="location-link" href="https://www.google.com/maps/search/human+made" target="_blank">👕 搜尋附近：human made</a>
             </div>
             <div id="cat1-sub4" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/Lilo+Coffee+Roasters" target="_blank">☕ Lilo Coffee Roasters <span class="desc">隱身巷弄的自家烘焙，街拍超有味道</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/Wad+Omotenashi+Cafe" target="_blank">🍵 Wad Omotenashi Cafe <span class="desc">日式絕美茶具與抹茶，長輩絕對愛</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/328+NY3" target="_blank">☕ 搜尋：328 NY3</a>
+                <a class="location-link" href="https://www.google.com/maps/search/スターバックス" target="_blank">☕ 搜尋附近：星巴克</a>
+                <a class="location-link" href="https://www.google.com/maps/search/心斎橋焙煎所" target="_blank">☕ 搜尋：心齋橋焙煎所</a>
             </div>
             <div id="cat1-sub5" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/りくろーおじさんの店" target="_blank">🍰 Rikuro 老爺爺起司蛋糕 <span class="desc">剛出爐熱騰騰，難波必吃</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/宇治園" target="_blank">🍵 宇治園 本店 <span class="desc">超濃郁抹茶芭菲與霜淇淋</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🛒 搜尋附近：大創</a>
+                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🛒 搜尋附近：無印良品</a>
+                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🛒 搜尋附近：3coins</a>
             </div>
             <div id="cat1-sub6" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/たこ焼き" target="_blank">🐙 搜尋附近：章魚燒 (たこ焼き) <span class="desc">來大阪怎麼能不吃街邊熱呼呼的章魚燒！</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/串カツだるま" target="_blank">🍢 串炸達摩 (串カツだるま) <span class="desc">大阪靈魂炸物，解饞小東西首選</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/Harbs" target="_blank">🍰 搜尋附近：Harbs</a>
+                <a class="location-link" href="https://www.google.com/maps/search/MooKEN" target="_blank">🍰 搜尋：MooKEN</a>
+                <a class="location-link" href="https://www.google.com/maps/search/カヌレ堂+CANELE+du+JAPON" target="_blank">🍰 搜尋附近：canele du Japon</a>
+                <a class="location-link" href="https://www.google.com/maps/search/りくろーおじさんの店" target="_blank">🍰 搜尋附近：rikuro's (老爺爺起司蛋糕)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ル・クロワッサン" target="_blank">🍰 搜尋附近：le croissant</a>
+                <a class="location-link" href="https://www.google.com/maps/search/鳴門鯛焼本舗" target="_blank">🍰 搜尋附近：鳴門雕燒本鋪</a>
+                <a class="location-link" href="https://www.google.com/maps/search/クレープリー・アルション" target="_blank">🍰 搜尋：crepe alcyon</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ストロベリーマニア" target="_blank">🍰 搜尋：strawberry mania</a>
+                <a class="location-link" href="https://www.google.com/maps/search/くろーばー結び+なんばウォーク店" target="_blank">🍰 指定分店：くろーばー結び なんばウォーク店</a>
             </div>
             <div id="cat1-sub7" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/551蓬莱" target="_blank">🥟 551 HORAI 蓬萊肉包 <span class="desc">關西人最愛，香氣超級罪惡</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/Bâton+d'or" target="_blank">🥨 Bâton d'or (高島屋內) <span class="desc">號稱 Pocky 界的 LV，高級伴手禮</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/551蓬莱" target="_blank">🍢 搜尋附近：551 蓬萊</a>
+                <a class="location-link" href="https://www.google.com/maps/search/たこ焼き十八番" target="_blank">🍢 搜尋附近：十八番 章魚燒</a>
+                <a class="location-link" href="https://www.google.com/maps/search/串カツだるま+心斎橋店" target="_blank">🍢 指定分店：達摩串炸心齋橋店</a>
+                <a class="location-link" href="https://www.google.com/maps/search/甲賀流たこ焼き" target="_blank">🍢 搜尋附近：甲賀流章魚燒</a>
             </div>
             <div id="cat1-sub8" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🔍 搜尋附近：大創 DAISO</a>
-                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🔍 搜尋附近：3COINS</a>
-                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🔍 搜尋附近：無印良品 MUJI</a>
-                <a class="location-link" href="https://www.google.com/maps/search/ポケモンセンター" target="_blank">🦖 前往：寶可夢中心 DX</a>
+                <a class="location-link" href="https://www.google.com/maps/search/なんばマルイ" target="_blank">🌟 前往：難波丸井</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ポケモンセンター" target="_blank">🌟 搜尋附近：寶可夢中心</a>
+                <a class="location-link" href="https://www.google.com/maps/search/大丸" target="_blank">🌟 搜尋附近：大丸百貨</a>
+                <a class="location-link" href="https://www.google.com/maps/search/PARCO" target="_blank">🌟 搜尋附近：PARCO</a>
             </div>
 
             <!-- ================= 梅田 ================= -->
             <div id="cat2-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">🔍 搜尋附近：大國藥妝 (ダイコク)</a>
-                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">🔍 搜尋附近：Donki 唐吉訶德</a>
-                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">🔍 搜尋附近：松本清</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">💊 搜尋附近：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">💊 搜尋附近：唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">💊 搜尋附近：松本清</a>
             </div>
             <div id="cat2-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/@cosme+STORE" target="_blank">🔍 搜尋附近：@cosme STORE</a>
-                <a class="location-link" href="https://www.google.com/maps/search/阪急百貨店" target="_blank">🔍 前往：阪急百貨</a>
+                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🎮 搜尋附近：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/アニメイト" target="_blank">🎮 搜尋附近：安利美特 (Animate)</a>
             </div>
             <div id="cat2-sub3" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/Nintendo+OSAKA" target="_blank">🍄 Nintendo OSAKA <span class="desc">任天堂官方直營旗艦店 (大丸梅田)</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🔍 搜尋附近：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/GU" target="_blank">👕 搜尋附近：GU</a>
+                <a class="location-link" href="https://www.google.com/maps/search/HEP+FIVE" target="_blank">👕 前往：HEP FIVE</a>
             </div>
             <div id="cat2-sub4" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ブルーボトルコーヒー" target="_blank">☕ Blue Bottle 藍瓶咖啡 <span class="desc">採光明亮，極簡工業風非常好拍</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/ホワイトバードコーヒースタンド" target="_blank">☕ Whitebird coffee stand <span class="desc">大人系的深焙咖啡與復古氛圍</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/fiveran" target="_blank">☕ 搜尋：fiveran</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ブルーボトルコーヒー" target="_blank">☕ 搜尋附近：藍瓶咖啡 (Blue Bottle)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ホワイトバードコーヒースタンド" target="_blank">☕ 搜尋：whitebird</a>
             </div>
             <div id="cat2-sub5" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ハーブス" target="_blank">🍰 HARBS 水果千層 <span class="desc">水果跟鮮奶油完美結合的王者</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🛒 搜尋附近：大創</a>
+                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🛒 搜尋附近：無印良品</a>
+                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🛒 搜尋附近：3coins</a>
             </div>
             <div id="cat2-sub6" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/阪神名物+いか焼き" target="_blank">🦑 阪神名物 花枝燒 <span class="desc">梅田超人氣平價排隊小吃，香氣撲鼻</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/たこ焼き" target="_blank">🐙 搜尋附近：章魚燒 (たこ焼き) <span class="desc">逛街餓了隨手來一盒剛好</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/P.G+donut" target="_blank">🍰 搜尋：P.G donut</a>
+                <a class="location-link" href="https://www.google.com/maps/search/Harbs" target="_blank">🍰 搜尋附近：Harbs</a>
+                <a class="location-link" href="https://www.google.com/maps/search/grenier+梅田店" target="_blank">🍰 指定分店：grenier梅田店</a>
+                <a class="location-link" href="https://www.google.com/maps/search/クレープリースタンド+シャンデレール" target="_blank">🍰 搜尋：creperie stand chandeleur</a>
+                <a class="location-link" href="https://www.google.com/maps/search/gariguette+osaka" target="_blank">🍰 搜尋：gariguette osaka</a>
+                <a class="location-link" href="https://www.google.com/maps/search/エシレ・マルシェ+オ+ブール+阪急うめだ本店" target="_blank">🍰 指定分店：ÉCHIRÉ Marché au Beurre (阪急うめだ)</a>
+                <a class="location-link" href="https://www.google.com/maps/search/アフタヌーンティー" target="_blank">🍰 搜尋附近：afternoon tea</a>
+                <a class="location-link" href="https://www.google.com/maps/search/カヌレ+ダニエル" target="_blank">🍰 搜尋：神戶花式可麗露Daniel</a>
             </div>
             <div id="cat2-sub7" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/グランカルビー" target="_blank">🥔 Grand Calbee (阪急百貨) <span class="desc">頂級厚切洋芋片，包裝超有質感</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/エシレ" target="_blank">🧈 ÉCHIRÉ 艾許奶油 <span class="desc">神級奶油點心，鐵盒餅乾必搶</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/餃子立山" target="_blank">🍢 搜尋：餃子立山</a>
+                <a class="location-link" href="https://www.google.com/maps/search/香川+うどん+北新地" target="_blank">🍢 搜尋：kagawa-udon kitashinchi</a>
+                <a class="location-link" href="https://www.google.com/maps/search/はなだこ" target="_blank">🍢 搜尋：hanadako</a>
             </div>
             <div id="cat2-sub8" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🔍 搜尋附近：大創 DAISO</a>
-                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🔍 搜尋附近：3COINS</a>
-                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🔍 搜尋附近：無印良品 MUJI</a>
+                <a class="location-link" href="https://www.google.com/maps/search/HEP+FIVE" target="_blank">🌟 前往：HEP FIVE</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ポケモンセンター" target="_blank">🌟 搜尋附近：寶可夢中心</a>
             </div>
 
-            <!-- ================= 三宮中心街 ================= -->
+            <!-- ================= 神戶 ================= -->
             <div id="cat3-sub1" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">🔍 搜尋附近：大國藥妝 (ダイコク)</a>
-                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">🔍 搜尋附近：Donki 唐吉訶德</a>
-                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">🔍 搜尋附近：松本清</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイコクドラッグ" target="_blank">💊 搜尋附近：大國藥妝</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ドン・キホーテ" target="_blank">💊 搜尋附近：唐吉訶德</a>
+                <a class="location-link" href="https://www.google.com/maps/search/マツモトキヨシ" target="_blank">💊 搜尋附近：松本清</a>
             </div>
             <div id="cat3-sub2" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/@cosme+STORE" target="_blank">🔍 搜尋附近：@cosme STORE</a>
-                <a class="location-link" href="https://www.google.com/maps/search/神戸阪急" target="_blank">🔍 前往：神戶阪急百貨</a>
+                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🎮 搜尋附近：駿河屋</a>
+                <a class="location-link" href="https://www.google.com/maps/search/アニメイト" target="_blank">🎮 搜尋附近：安利美特 (Animate)</a>
             </div>
             <div id="cat3-sub3" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/駿河屋" target="_blank">🔍 搜尋附近：駿河屋</a>
-                <a class="location-link" href="https://www.google.com/maps/search/アニメイト" target="_blank">🔍 搜尋附近：安麗美特</a>
+                <a class="location-link" href="https://www.google.com/maps/search/GU" target="_blank">👕 搜尋附近：GU</a>
             </div>
             <div id="cat3-sub4" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/スターバックスコーヒー+神戸北野異人館店" target="_blank">☕ 星巴克 北野異人館店 <span class="desc">歐風歷史建築，外觀跟室內都超好拍</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/神戸にしむら珈琲店" target="_blank">☕ 神戶 Nishimura 咖啡 <span class="desc">昭和風情復古咖啡館，氣氛滿分</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/ロンシュクレカフェ" target="_blank">☕ 搜尋：Rond sucré cafe</a>
+                <a class="location-link" href="https://www.google.com/maps/search/ブルーボトルコーヒー" target="_blank">☕ 搜尋附近：藍瓶咖啡 (Blue Bottle)</a>
             </div>
             <div id="cat3-sub5" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/神戸六甲牧場" target="_blank">🍦 神戶六甲牧場 <span class="desc">特濃牛乳霜淇淋，散步必備甜食</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/観音屋" target="_blank">🧀 Kannonya 觀音屋 <span class="desc">獨特熱熔起司蛋糕，鹹甜交織</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🛒 搜尋附近：大創</a>
+                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🛒 搜尋附近：無印良品</a>
+                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🛒 搜尋附近：3coins</a>
             </div>
             <div id="cat3-sub6" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/神戸牛コロッケ" target="_blank">🥩 搜尋附近：神戶牛可樂餅 <span class="desc">大排長龍的炸肉餅，邊走邊吃超爽</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/老祥記+豚まん" target="_blank">🥟 老祥記 豬肉包 <span class="desc">南京町超人氣小肉包，一口一個剛好</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/Harbs" target="_blank">🍰 搜尋附近：Harbs</a>
+                <a class="location-link" href="https://www.google.com/maps/search/hanasaku+crepe" target="_blank">🍰 搜尋：hanasaku crepe</a>
+                <a class="location-link" href="https://www.google.com/maps/search/Patisserie+Tooth+Tooth" target="_blank">🍰 搜尋附近：Patisserie Tooth Tooth</a>
+                <a class="location-link" href="https://www.google.com/maps/search/L'AVENUE+bis" target="_blank">🍰 搜尋：L'AVENUE bis</a>
+                <a class="location-link" href="https://www.google.com/maps/search/フロインドリーブ" target="_blank">🍰 搜尋：freundlieb</a>
             </div>
             <div id="cat3-sub7" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/神戸風月堂" target="_blank">🍪 神戶風月堂 <span class="desc">招牌法蘭酥，鐵盒包裝送禮超美</span></a>
-                <a class="location-link" href="https://www.google.com/maps/search/神戸フランツ" target="_blank">🍮 Frantz 神戶魔法壺布丁 <span class="desc">陶甕裝的三層布丁，層次超豐富</span></a>
+                <a class="location-link" href="https://www.google.com/maps/search/森谷商店" target="_blank">🍢 搜尋附近：森谷商店</a>
             </div>
             <div id="cat3-sub8" class="content-group">
-                <a class="location-link" href="https://www.google.com/maps/search/ダイソー" target="_blank">🔍 搜尋附近：大創 DAISO</a>
-                <a class="location-link" href="https://www.google.com/maps/search/3COINS" target="_blank">🔍 搜尋附近：3COINS</a>
-                <a class="location-link" href="https://www.google.com/maps/search/無印良品" target="_blank">🔍 搜尋附近：無印良品 MUJI</a>
+                <div class="empty-state">此分類目前為空 🪹<br>隨時準備增加新口袋名單！</div>
             </div>
 
         </div>
@@ -315,14 +341,14 @@
 
 <script>
     const subCategories = [
-        { id: 'sub1', icon: '💊', name: '藥妝專區' },
-        { id: 'sub2', icon: '✨', name: '彩妝推薦' },
-        { id: 'sub3', icon: '🎮', name: '動漫聖地' },
-        { id: 'sub4', icon: '☕', name: '質感咖啡廳' },
-        { id: 'sub5', icon: '🍰', name: '療癒甜食' },
-        { id: 'sub6', icon: '🍢', name: '解饞小點' },
-        { id: 'sub7', icon: '🎁', name: '必買伴手禮' },
-        { id: 'sub8', icon: '🛍️', name: '雜貨與其他' }
+        { id: 'sub1', icon: '💊', name: '藥妝' },
+        { id: 'sub2', icon: '🎮', name: '動漫' },
+        { id: 'sub3', icon: '👕', name: '衣服' },
+        { id: 'sub4', icon: '☕', name: '咖啡廳' },
+        { id: 'sub5', icon: '🛒', name: '生活百貨' },
+        { id: 'sub6', icon: '🍰', name: '甜的' },
+        { id: 'sub7', icon: '🍢', name: '鹹的' },
+        { id: 'sub8', icon: '🌟', name: '其他' }
     ];
 
     let currentCat = '';
